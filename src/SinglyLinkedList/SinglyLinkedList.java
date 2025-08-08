@@ -116,6 +116,8 @@ public class SinglyLinkedList {
                 previous = previous.next;
                 count++;
             }
+            ListNode current = previous.next;
+            previous.next = current.next;
 
         }
     }
