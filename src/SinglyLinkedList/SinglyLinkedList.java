@@ -66,7 +66,9 @@ public class SinglyLinkedList {
             node.next = head;
             head = node;
             return;
-        }else {
+        }
+        else
+        {
             ListNode previous = head;
             int count = 1;
             while(count < position - 1) {
@@ -88,6 +90,34 @@ public class SinglyLinkedList {
         head = head.next;
         temp.next = null;
         return temp;
+    }
+
+    public ListNode deleteLast() {
+        if(head == null || head.next == null) {
+            return head;
+        }
+        ListNode current = head;
+        ListNode previous = null;
+        while(current.next != null) {
+            previous = current;
+            current = current.next;
+        }
+        previous.next = null;
+        return current;
+    }
+
+    public void delete(int position) {
+        if(position == 1) {
+            head = head.next;
+        } else {
+            ListNode previous = head;
+            int count = 1;
+            while(count < position - 1) {
+                previous = previous.next;
+                count++;
+            }
+
+        }
     }
 
 
