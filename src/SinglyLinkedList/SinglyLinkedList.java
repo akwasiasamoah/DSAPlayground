@@ -122,6 +122,35 @@ public class SinglyLinkedList {
         }
     }
 
+    public boolean search(int searchKey) {
+        if(head == null) {
+            return false;
+        }
+        ListNode current = head;
+        while(current != null) {
+            if(current.data == searchKey) {
+                return true;
+            }
+            current = current.next;
+        }
+
+        return false;
+    }
+
+    public ListNode reverse() {
+        ListNode current = head;
+        ListNode previous = null;
+        ListNode next = null;
+        while(current != null) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+
+        return previous;
+    }
+
 
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
