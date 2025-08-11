@@ -165,33 +165,76 @@ public class SinglyLinkedList {
         return slowPtr;
     }
 
+    public ListNode FindNthNode(int n) {
+        if(head == null) {
+            return null;
+        }
+
+        if(n <= 0) {
+            throw new IllegalArgumentException("Invalid value: n= " + n);
+        }
+        ListNode mainPtr = head;
+        ListNode refPtr = head;
+        int count = 0;
+        while(count < n) {
+            if(refPtr == null) {
+                throw new IllegalArgumentException(n + "is greater than the number of nodes in list");
+            }
+            refPtr = refPtr.next;
+            count++;
+        }
+        while(refPtr != null) {
+            refPtr = refPtr.next;
+            mainPtr = mainPtr.next;
+        }
+
+        return mainPtr;
+    }
+
+    public void removeDuplicates()
+    {
+        ListNode current = head;
+        while(current != null && current.next != null) {
+            if(current.data == current.next.data) {
+                current.next = current.next.next;
+            }else {
+                current = current.next;
+            }
+        }
+    }
+
+
+
 
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
-//        sll.head = new ListNode(10);
-//        ListNode second = new ListNode(1);
-//        ListNode third = new ListNode(8);
-//        ListNode fourth = new ListNode(11);
-//
-//        sll.head.next = second;
-//        second.next = third;
-//        third.next = fourth;
+        sll.head = new ListNode(10);
+        ListNode second = new ListNode(1);
+        ListNode third = new ListNode(8);
+        ListNode fourth = new ListNode(11);
+        ListNode fifth = new ListNode(20);
+
+        sll.head.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+
+        ListNode node = sll.FindNthNode(3);
+        System.out.println(node.data);
+
+
 
 //        sll.insertFirst(11);
 //        sll.insertLast(12);
 //        sll.insertFirst(4);
 //        sll.insertFirst(10);
-//
-//
-//        sll.display();
+
+
+        sll.display();
 //
 //        int count = sll.length();
 //        System.out.println(count);
 
-        sll.insert(1,3);
-        sll.insert(2,5);
-        sll.insert(1, 2);
-        sll.display();
 
 
 
