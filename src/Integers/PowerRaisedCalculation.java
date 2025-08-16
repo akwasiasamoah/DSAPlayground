@@ -3,7 +3,7 @@ package Integers;
 public class PowerRaisedCalculation {
     public static double myPow(double base, int power) {
         long exponent = power;
-        if(power < 0) {
+        if(exponent < 0) {
             base = 1 /base;
             exponent = -exponent;
         }
